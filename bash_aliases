@@ -84,6 +84,6 @@ getAM() {
 			echo "get AndroidManifest.xml ..."
 		fi
 		rm -rf /tmp/tmpapk
-		rm -rf /home/young/apktool
+		rm -rf ~/apktool
 	fi
 }
