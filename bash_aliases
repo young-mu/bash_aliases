@@ -87,3 +87,11 @@ getAM() {
 		rm -rf ~/apktool
 	fi
 }
+
+# view directory size like ls 
+dls() {
+	items=`ls -F | grep "/$" | sed 's/\///'`
+	for item in ${items}; do
+		du -sh ${item}
+	done
+}
