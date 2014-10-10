@@ -1,5 +1,6 @@
 # Internal Commands Abbr. 
 alias c='clear'
+alias s='source'
 alias p='pwd'
 alias g='gedit'
 alias op='xdg-open'
