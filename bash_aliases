@@ -1,5 +1,6 @@
 # Internal Commands Abbr. 
 alias c='clear'
+alias e='exit'
 alias s='source'
 alias p='pwd'
 alias g='gedit'
@@ -21,6 +22,7 @@ alias jt='javac test.java && java test'
 # External Commands Abbr. 
 alias ds='display'
 alias lx='xelatex' 
+alias tm='tmux -2'
 alias slm='sublime-text'
 
 # Android
