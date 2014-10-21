@@ -101,3 +101,13 @@ dls() {
 	done
 	IFS=${OLDIFS}
 }
+
+# show image dimensions (width x height)
+# NOTE : imagemagick need to be installed 
+imgdim() {
+	if [[ $# -ne 1 ]]; then
+		echo "Usage : imgdim <file>"
+	else
+		identify -format "%wx%h" $1
+	fi
+}
