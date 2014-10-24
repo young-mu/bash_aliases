@@ -1,6 +1,5 @@
-bash_aliases
+bash\_aliases
 ============
-my own .bash_aliases configuration file
+my own .bash\_aliases configuration file
 
-Usage : 
-cp bash_aliases ~/.bash_aliases
+Usage : cp bash\_aliases ~/.bash\_aliases
