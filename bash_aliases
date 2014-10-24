@@ -112,3 +112,10 @@ imgdim() {
 		identify -format "%wx%h" $1
 	fi
 }
+
+# show number of files and directories
+num() {
+	fileNum=`ls -1 -F | sed "/\/$/d" | wc -l`
+	dirNum=`ls -1 -F | grep "/$" | wc -l`
+	echo -e "${fileNum} files, ${dirNum} directories"
+}
