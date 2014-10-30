@@ -119,3 +119,14 @@ num() {
 	dirNum=`ls -1 -F | grep "/$" | wc -l`
 	echo -e "${fileNum} files, ${dirNum} directories"
 }
+
+# android screencap
+sc() {
+	if [[ $# -eq 0 ]]; then
+		adb shell screencap -p | sed 's/\r$//' > screen.png
+		echo "./screen.png is generated"
+	elif [[ $# -eq 1 ]]; then
+		adb shell screencap -p | sed 's/\r$//' > ${1}.png
+		echo "./${1}.png is generated"
+	fi
+}
