@@ -92,14 +92,11 @@ getAM() {
 	fi
 }
 
-# view directory size like ls 
+# view directory size like ls
 dls() {
 	OLDIFS=${IFS}
 	IFS=$'\n'
-	items=`ls -F | grep "/$" | sed 's/\///'`
-	for item in ${items}; do
-		du -sh ${item}
-	done
+    du -sh `ls -p | grep "/$"`
 	IFS=${OLDIFS}
 }
 
