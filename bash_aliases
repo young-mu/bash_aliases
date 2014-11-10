@@ -19,6 +19,7 @@ alias gt='gcc -o test test.c && ./test'
 alias g+='g++ -o test test.cpp && ./test'
 alias jt='javac test.java && java test'
 alias agi='sudo apt-get install -y'
+alias lk='gnome-screensaver-command -l'
 
 # External Commands Abbr. 
 alias ds='display'
