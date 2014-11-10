@@ -127,3 +127,17 @@ sc() {
 		echo "./${1}.png is generated"
 	fi
 }
+
+# firefox command
+fox() {
+    if [[ $# -eq 0 ]]; then
+        firefox
+    elif [[ $# -eq 1 ]]; then
+        case "$1" in
+            github) firefox -new-tab "http://github.com/young-mu";;
+            baidu) firefox -new-tab "http://www.baidu.com";;
+            xref) firefox -new-tab "http://androidxref.com";;
+            *) firefox -search $1
+        esac
+    fi
+}
