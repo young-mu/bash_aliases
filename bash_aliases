@@ -1,3 +1,6 @@
+# source local aliases
+source ~/.bash_aliases.local
+
 # Internal Commands Abbr. 
 alias c='clear'
 alias e='exit'
