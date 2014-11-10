@@ -44,92 +44,92 @@ alias genx86='cd ~/Android/android_x86/out/target/product/generic_x86'
 
 # display PATH each line
 path() {
-	echo "${PATH//:/$'\n'}"
+    echo "${PATH//:/$'\n'}"
 }
 
 # grep text
 gp() {
-	grep -rni "$1" .
+    grep -rni "$1" .
 }
 
 # add exec permission
 ax() {
-	if [[ $# -ne 1 ]]; then
-		echo "Usage : ax <file>"
-	else
-		chmod a+x $1
-	fi
+    if [[ $# -ne 1 ]]; then
+        echo "Usage : ax <file>"
+    else
+        chmod a+x $1
+    fi
 }
 
 # mkdir directory and enter
 mcd() {
-	if [[ $# -ne 1 ]]; then
-		echo "Usage : mcd <dir>"
-	else 
-		mkdir -p $1 && cd $1
-	fi
+    if [[ $# -ne 1 ]]; then
+        echo "Usage : mcd <dir>"
+    else 
+        mkdir -p $1 && cd $1
+    fi
 }
 
 # display runtime since last startup
 rt() {
-	cat /proc/uptime | awk -F. '{\
-		run_days = $1 / 86400;\
-		run_hours = ($1 % 86400) / 3600;\
-		run_minutes = ($1 % 3600) / 60;\
-		run_seconds = $1 % 60;\
-		printf("%d days %d hours %d minutes %d seconds\n"\
-		, run_days, run_hours, run_minutes, run_seconds)}'
+    cat /proc/uptime | awk -F. '{\
+        run_days = $1 / 86400;\
+        run_hours = ($1 % 86400) / 3600;\
+        run_minutes = ($1 % 3600) / 60;\
+        run_seconds = $1 % 60;\
+        printf("%d days %d hours %d minutes %d seconds\n"\
+        , run_days, run_hours, run_minutes, run_seconds)}'
 }
 
 # get AndroidManifest from apk into current directory
 getAM() {
-	if [[ ! "$1" =~ .apk$ ]]; then
-		echo "Usage : getAM <apk>"
-	elif [[ "$1" =~ .apk$ ]]; then
-		apktool d $1 /tmp/tmpapk &> /dev/null
-		cp /tmp/tmpapk/AndroidManifest.xml ./
-		if [[ $? -eq 0 ]]; then
-			echo "get AndroidManifest.xml ..."
-		fi
-		rm -rf /tmp/tmpapk
-		rm -rf ~/apktool
-	fi
+    if [[ ! "$1" =~ .apk$ ]]; then
+        echo "Usage : getAM <apk>"
+    elif [[ "$1" =~ .apk$ ]]; then
+        apktool d $1 /tmp/tmpapk &> /dev/null
+        cp /tmp/tmpapk/AndroidManifest.xml ./
+        if [[ $? -eq 0 ]]; then
+            echo "get AndroidManifest.xml ..."
+        fi
+        rm -rf /tmp/tmpapk
+        rm -rf ~/apktool
+    fi
 }
 
 # view directory size like ls
 dls() {
-	OLDIFS=${IFS}
-	IFS=$'\n'
+    OLDIFS=${IFS}
+    IFS=$'\n'
     du -sh `ls -p | grep "/$"`
-	IFS=${OLDIFS}
+    IFS=${OLDIFS}
 }
 
 # show image dimensions (width x height)
 # NOTE : imagemagick need to be installed 
 imgdim() {
-	if [[ $# -ne 1 ]]; then
-		echo "Usage : imgdim <file>"
-	else
-		identify -format "%wx%h" $1
-	fi
+    if [[ $# -ne 1 ]]; then
+        echo "Usage : imgdim <file>"
+    else
+        identify -format "%wx%h" $1
+    fi
 }
 
 # show number of files and directories
 num() {
-	fileNum=`ls -1 -F | sed "/\/$/d" | wc -l`
-	dirNum=`ls -1 -F | grep "/$" | wc -l`
-	echo -e "${fileNum} files, ${dirNum} directories"
+    fileNum=`ls -1 -F | sed "/\/$/d" | wc -l`
+    dirNum=`ls -1 -F | grep "/$" | wc -l`
+    echo -e "${fileNum} files, ${dirNum} directories"
 }
 
 # android screencap
 sc() {
-	if [[ $# -eq 0 ]]; then
-		adb shell screencap -p | sed 's/\r$//' > screen.png
-		echo "./screen.png is generated"
-	elif [[ $# -eq 1 ]]; then
-		adb shell screencap -p | sed 's/\r$//' > ${1}.png
-		echo "./${1}.png is generated"
-	fi
+    if [[ $# -eq 0 ]]; then
+        adb shell screencap -p | sed 's/\r$//' > screen.png
+        echo "./screen.png is generated"
+    elif [[ $# -eq 1 ]]; then
+        adb shell screencap -p | sed 's/\r$//' > ${1}.png
+        echo "./${1}.png is generated"
+    fi
 }
 
 # firefox command
