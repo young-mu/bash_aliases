@@ -132,16 +132,36 @@ sc() {
     fi
 }
 
-# firefox command
+# firefox command (default search engine : baidu)
 fox() {
     if [[ $# -eq 0 ]]; then
         firefox
     elif [[ $# -eq 1 ]]; then
         case "$1" in
-            github) firefox -new-tab "http://github.com/young-mu";;
-            baidu) firefox -new-tab "http://www.baidu.com";;
+            git) firefox -new-tab "http://github.com/young-mu";;
             xref) firefox -new-tab "http://androidxref.com";;
+            note) firefox -new-tab "http://note.youdao.com";;
+            126) firefox -new-tab "http://www.126.com";;
             *) firefox -search $1
+        esac
+    fi
+}
+
+# google-chrome command (default page : google)
+gc() {
+    if [[ $# -eq 0 ]]; then
+        google-chrome "http://www.google.com"
+    elif [[ $# -eq 1 ]]; then
+        case "$1" in 
+            gmail) google-chrome "http://gmail.google.com";;
+            trans) google-chrome "http://translate.google.com";;
+            dev) google-chrome "http://developer.android.com";;
+            play) google-chrome "http://play.google.com";;
+            git) google-chrome "http://github.com/young-mu";;
+            xref) google-chrome "http://androidxref.com";;
+            note) google-chrome "http://note.youdao.com";;
+            126) google-chrome "http://www.126.com";;
+            *) echo "no $1 item"
         esac
     fi
 }
