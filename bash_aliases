@@ -1,6 +1,3 @@
-# source local aliases
-source ~/.bash_aliases.local
-
 # Internal Commands Abbr. 
 alias c='clear'
 alias e='exit'
@@ -161,7 +158,10 @@ gc() {
             xref) google-chrome "http://androidxref.com";;
             note) google-chrome "http://note.youdao.com";;
             126) google-chrome "http://www.126.com";;
-            *) echo "no $1 item"
+            *) echo "no <$1> item."
         esac
     fi
 }
+
+# source local aliases
+source ~/.bash_aliases.local
