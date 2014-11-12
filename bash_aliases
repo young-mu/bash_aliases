@@ -1,4 +1,4 @@
-# Internal Commands Abbr. 
+# Internal Commands Abbr.
 alias c='clear'
 alias e='exit'
 alias s='source'
@@ -21,11 +21,11 @@ alias jt='javac test.java && java test'
 alias agi='sudo apt-get install -y'
 alias lk='gnome-screensaver-command -l'
 
-# External Commands Abbr. 
-alias ds='display'
-alias lx='xelatex' 
-alias tm='tmux -2'
-alias slm='sublime-text'
+# External Commands Abbr.
+alias ds='display'          # imagemagick
+alias lx='xelatex'          # texlive-full
+alias tm='tmux -2'          # tmux
+alias slm='sublime-text'    # sublime-text
 
 # Android
 alias d='adb shell'
@@ -160,6 +160,17 @@ gc() {
             126) google-chrome "http://www.126.com";;
             *) echo "no <$1> item."
         esac
+    fi
+}
+
+# open git project in github
+go() {
+    REMOTE=`git remote -v 2> /dev/null`
+    if [[ $? -ne 0 ]]; then
+        echo "NO git project here."
+    else
+        URL=`echo ${REMOTE} | awk '{print $2}'`
+        google-chrome ${URL}
     fi
 }
 
