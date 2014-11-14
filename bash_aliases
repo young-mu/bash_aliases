@@ -12,7 +12,7 @@ alias ....='cd ../../..'
 # Internal Commands Extd.
 alias rm='rm -I'
 alias lh='ls -lh --color=auto'
-alias hs='history | grep --color=auto'
+alias hs='history | grep --color=auto -i'
 alias ff='find . -type f -name'
 alias fd='find . -type d -name'
 alias gt='gcc -o test test.c && ./test'
@@ -152,7 +152,9 @@ gc() {
         case "$1" in 
             gmail) google-chrome "http://gmail.google.com";;
             trans) google-chrome "http://translate.google.com";;
+            src) google-chrome "http://source.android.com";;
             dev) google-chrome "http://developer.android.com";;
+            repot) google-chrome "https://android.googlesource.com";;
             play) google-chrome "http://play.google.com";;
             git) google-chrome "http://github.com/young-mu";;
             xref) google-chrome "http://androidxref.com";;
