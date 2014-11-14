@@ -29,6 +29,7 @@ alias slm='sublime-text'    # sublime-text
 
 # Android
 alias d='adb shell'
+alias L='cd ~/AOSP/Lollipop; source build/envsetup.sh 1> /dev/null'
 alias nb='ndk-build'
 alias apk='aapt d badging'
 alias dex2jar='~/Tools/dex2jar/dex2jar-0.0.9.15/d2j-dex2jar.sh'
