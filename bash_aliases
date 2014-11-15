@@ -177,5 +177,12 @@ go() {
     fi
 }
 
+# show Android make -j number
+makej() {
+    nCore=`cat /proc/cpuinfo | grep processor | wc -l`
+    isHT=`cat /proc/cpuinfo | grep flags | uniq | grep ht | wc -l`
+    echo "2 * ${nCore} * (${isHT} + 1)" | bc
+}
+
 # source local aliases
 source ~/.bash_aliases.local
