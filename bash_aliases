@@ -34,9 +34,6 @@ alias nb='ndk-build'
 alias apk='aapt d badging'
 alias dex2jar='~/Tools/dex2jar/dex2jar-0.0.9.15/d2j-dex2jar.sh'
 alias jd-gui='~/Tools/jd-gui/jd-gui'
-alias cts='cd ~/Android/android/out/host/linux-x86/cts/android-cts'
-alias genarm='cd ~/Android/android/out/target/product/generic'
-alias genx86='cd ~/Android/android_x86/out/target/product/generic_x86'
 
 # Inner Functions
 
