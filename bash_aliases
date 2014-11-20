@@ -30,12 +30,28 @@ alias slm='sublime-text'    # sublime-text
 # Android
 alias d='adb shell'
 alias L='cd ~/AOSP/Lollipop; source build/envsetup.sh 1> /dev/null'
+alias flo='cd ~/AOSP/Lollipop/out/target/product/flo;'
 alias nb='ndk-build'
 alias apk='aapt d badging'
 alias dex2jar='~/Tools/dex2jar/dex2jar-0.0.9.15/d2j-dex2jar.sh'
 alias jd-gui='~/Tools/jd-gui/jd-gui'
 
 # Inner Functions
+fls() {
+    local F
+    F=""
+    for i in `cat ~/.bash_aliases | sed -n "/() {/s/\([a-z]*\).*/\1/p" | sort`; do
+        F="$F $i"
+    done
+    echo $F
+    F=""
+    if [[ -f ~/.bash_aliases.local ]]; then
+        for j in `cat ~/.bash_aliases.local | sed -n "/() {/s/\([a-z]*\).*/\1/p" | sort`; do
+            F="$F $j"
+        done
+    fi
+    echo $F
+}
 
 # display PATH each line
 path() {
@@ -182,4 +198,6 @@ makej() {
 }
 
 # source local aliases
-source ~/.bash_aliases.local
+if [[ -f ~/.bash_aliases.local ]]; then
+    source ~/.bash_aliases.local
+fi
