@@ -10,6 +10,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # Internal Commands Extd.
+alias n='wc -l'
 alias rm='rm -I'
 alias lh='ls -lh --color=auto'
 alias hs='history | grep --color=auto -i'
@@ -35,6 +36,7 @@ alias nb='ndk-build'
 alias apk='aapt d badging'
 alias dex2jar='~/Tools/dex2jar/dex2jar-0.0.9.15/d2j-dex2jar.sh'
 alias jd-gui='~/Tools/jd-gui/jd-gui'
+alias dp='adb shell input keyevent KEYCODE_POWER'
 
 # Inner Functions
 fls() {
