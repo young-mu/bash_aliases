@@ -155,6 +155,7 @@ fox() {
             xref) firefox -new-tab "http://androidxref.com";;
             note) firefox -new-tab "http://note.youdao.com";;
             126) firefox -new-tab "http://www.126.com";;
+            md) firefox -new-tab "http://mahua.jser.me";;
             *) firefox -search $1
         esac
     fi
@@ -176,6 +177,7 @@ gc() {
             xref) google-chrome "http://androidxref.com";;
             note) google-chrome "http://note.youdao.com";;
             126) google-chrome "http://www.126.com";;
+            md) google-chrome "http://mahua.jser.me";;
             *) echo "no <$1> item."
         esac
     fi
