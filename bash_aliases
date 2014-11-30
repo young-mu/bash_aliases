@@ -28,16 +28,6 @@ alias lx='xelatex'          # texlive-full
 alias tm='tmux -2'          # tmux
 alias slm='sublime-text'    # sublime-text
 
-# Android
-alias d='adb shell'
-alias L='cd ~/AOSP/Lollipop; source build/envsetup.sh 1> /dev/null'
-alias flo='cd ~/AOSP/Lollipop/out/target/product/flo;'
-alias nb='ndk-build'
-alias apk='aapt d badging'
-alias dex2jar='~/Tools/dex2jar/dex2jar-0.0.9.15/d2j-dex2jar.sh'
-alias jd-gui='~/Tools/jd-gui/jd-gui'
-alias dp='adb shell input keyevent KEYCODE_POWER'
-
 # Inner Functions
 fls() {
     local F
@@ -94,21 +84,6 @@ rt() {
         , run_days, run_hours, run_minutes, run_seconds)}'
 }
 
-# get AndroidManifest from apk into current directory
-getAM() {
-    if [[ ! "$1" =~ .apk$ ]]; then
-        echo "Usage : getAM <apk>"
-    elif [[ "$1" =~ .apk$ ]]; then
-        apktool d $1 /tmp/tmpapk &> /dev/null
-        cp /tmp/tmpapk/AndroidManifest.xml ./
-        if [[ $? -eq 0 ]]; then
-            echo "get AndroidManifest.xml ..."
-        fi
-        rm -rf /tmp/tmpapk
-        rm -rf ~/apktool
-    fi
-}
-
 # view directory size like ls
 dls() {
     OLDIFS=${IFS}
@@ -132,17 +107,6 @@ num() {
     fileNum=`ls -1 -F | sed "/\/$/d" | wc -l`
     dirNum=`ls -1 -F | grep "/$" | wc -l`
     echo -e "${fileNum} files, ${dirNum} directories"
-}
-
-# android screencap
-sc() {
-    if [[ $# -eq 0 ]]; then
-        adb shell screencap -p | sed 's/\r$//' > screen.png
-        echo "./screen.png is generated"
-    elif [[ $# -eq 1 ]]; then
-        adb shell screencap -p | sed 's/\r$//' > ${1}.png
-        echo "./${1}.png is generated"
-    fi
 }
 
 # firefox command (default search engine : baidu)
@@ -194,52 +158,9 @@ go() {
     fi
 }
 
-# show Android make -j number
-makej() {
-    nCore=`cat /proc/cpuinfo | grep processor | wc -l`
-    isHT=`cat /proc/cpuinfo | grep flags | uniq | grep ht | wc -l`
-    echo "2 * ${nCore} * (${isHT} + 1)" | bc
-}
-
-# convert one image to multiple-dpi icons (install imagemagick first)
-genIcons() {
-    if [[ ! -e ./AndroidManifest.xml ]]; then
-        echo "NO Android project here."
-    else
-        if [[ $# -ne 1 ]]; then
-            echo "Usage : genIcons <image file>"
-        else
-            img=$1
-            icondirs=`ls -d ./res/drawable-*`
-            for icondir in ${icondirs}; do
-                dirname=`basename ${icondir} | cut -d"-" -f2`
-                case "${dirname}" in
-                    ldpi)
-                        convert -resize 36x36 ${img} ${icondir}/ic_launcher.png
-                        echo "generate res/drawable-ldpi/ic_launcher.png";;
-                    mdpi)
-                        convert -resize 48x48 ${img} ${icondir}/ic_launcher.png
-                        echo "generate res/drawable-mdpi/ic_launcher.png";;
-                    hdpi)
-                        convert -resize 72x72 ${img} ${icondir}/ic_launcher.png
-                        echo "generate res/drawable-hdpi/ic_launcher.png";;
-                    xhdpi)
-                        convert -resize 96x96 ${img} ${icondir}/ic_launcher.png
-                        echo "generate res/drawable-xhdpi/ic_launcher.png";;
-                    xxhdpi)
-                        convert -resize 144x144 ${img} ${icondir}/ic_launcher.png
-                        echo "generate res/drawable-xxhdpi/ic_launcher.png";;
-                    *)
-                        echo -e "unknown directory : ${icondir}"
-                esac
-            done
-        fi
-    fi
-}
-
 # source android aliases
 if [[ -f ~/.bash_aliases.android ]]; then
-    source ~/.bash_aliaes.android
+    source ~/.bash_aliases.android
 fi
 
 # source local aliases
