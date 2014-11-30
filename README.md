@@ -1,5 +1,9 @@
 bash\_aliases
 ============
-my own .bash\_aliases configuration file
+my own bash aliases configuration files
 
-Usage : cp bash\_aliases ~/.bash\_aliases
+Usage:
+<pre><code>
+\# cd bash\_aliases
+\# ./install.sh
+</pre></code>
