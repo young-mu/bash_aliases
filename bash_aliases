@@ -201,6 +201,47 @@ makej() {
     echo "2 * ${nCore} * (${isHT} + 1)" | bc
 }
 
+# convert one image to multiple-dpi icons (install imagemagick first)
+genIcons() {
+    if [[ ! -e ./AndroidManifest.xml ]]; then
+        echo "NO Android project here."
+    else
+        if [[ $# -ne 1 ]]; then
+            echo "Usage : genIcons <image file>"
+        else
+            img=$1
+            icondirs=`ls -d ./res/drawable-*`
+            for icondir in ${icondirs}; do
+                dirname=`basename ${icondir} | cut -d"-" -f2`
+                case "${dirname}" in
+                    ldpi)
+                        convert -resize 36x36 ${img} ${icondir}/ic_launcher.png
+                        echo "generate res/drawable-ldpi/ic_launcher.png";;
+                    mdpi)
+                        convert -resize 48x48 ${img} ${icondir}/ic_launcher.png
+                        echo "generate res/drawable-mdpi/ic_launcher.png";;
+                    hdpi)
+                        convert -resize 72x72 ${img} ${icondir}/ic_launcher.png
+                        echo "generate res/drawable-hdpi/ic_launcher.png";;
+                    xhdpi)
+                        convert -resize 96x96 ${img} ${icondir}/ic_launcher.png
+                        echo "generate res/drawable-xhdpi/ic_launcher.png";;
+                    xxhdpi)
+                        convert -resize 144x144 ${img} ${icondir}/ic_launcher.png
+                        echo "generate res/drawable-xxhdpi/ic_launcher.png";;
+                    *)
+                        echo -e "unknown directory : ${icondir}"
+                esac
+            done
+        fi
+    fi
+}
+
+# source android aliases
+if [[ -f ~/.bash_aliases.android ]]; then
+    source ~/.bash_aliaes.android
+fi
+
 # source local aliases
 if [[ -f ~/.bash_aliases.local ]]; then
     source ~/.bash_aliases.local
