@@ -68,7 +68,7 @@ ax() {
 mcd() {
     if [[ $# -ne 1 ]]; then
         echo "Usage : mcd <dir>"
-    else 
+    else
         mkdir -p $1 && cd $1
     fi
 }
@@ -93,7 +93,7 @@ dls() {
 }
 
 # show image dimensions (width x height)
-# NOTE : imagemagick need to be installed 
+# NOTE : imagemagick need to be installed
 imgdim() {
     if [[ $# -ne 1 ]]; then
         echo "Usage : imgdim <file>"
@@ -130,7 +130,7 @@ gc() {
     if [[ $# -eq 0 ]]; then
         google-chrome "http://www.google.com"
     elif [[ $# -eq 1 ]]; then
-        case "$1" in 
+        case "$1" in
             gmail) google-chrome "http://gmail.google.com";;
             trans) google-chrome "http://translate.google.com";;
             src) google-chrome "http://source.android.com";;
@@ -155,6 +155,29 @@ go() {
     else
         URL=`echo ${REMOTE} | awk '{print $2}'`
         google-chrome ${URL}
+    fi
+}
+
+# find file and open it
+ffo() {
+    if [[ $# -ne 1 ]]; then
+        echo "Usage: ffo <file>"
+    else
+        findres=`find . -type f -name $1`
+        findnum=`echo ${findres} | awk '{print NF}'`
+        if [[ ${findnum} -eq 1 ]]; then
+            vim ${findres}
+        elif [[ ${findnum} -ge 1 ]]; then
+            declare -i n=1
+            for file in ${findres}; do
+                echo "[${n}] ${file}"
+                n=n+1
+            done
+            read -p "which one to open: " num
+            if [[ ${num} -ge 1 && ${num} -lt n ]]; then
+                vim `echo ${findres} | awk -v cnt=$num '{print $cnt}'`
+            fi
+        fi
     fi
 }
 
