@@ -114,7 +114,7 @@ imgdim() {
 num() {
     fileNum=`ls -1 -F | sed "/\/$/d" | wc -l`
     dirNum=`ls -1 -F | grep "/$" | wc -l`
-    echo -e "${fileNum} files, ${dirNum} directories"
+    echo "${fileNum} files, ${dirNum} directories"
 }
 
 # firefox command (default search engine : baidu)
@@ -173,7 +173,9 @@ ffo() {
     else
         findres=`find . -type f -name $1`
         findnum=`echo ${findres} | awk '{print NF}'`
-        if [[ ${findnum} -eq 1 ]]; then
+        if [[ ${findnum} -eq 0 ]]; then
+            echo "$1 NOT found!"
+        elif [[ ${findnum} -eq 1 ]]; then
             vim ${findres}
         elif [[ ${findnum} -ge 1 ]]; then
             declare -i n=1

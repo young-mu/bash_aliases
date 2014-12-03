@@ -42,10 +42,10 @@ makej() {
         echo "2 * ${nCore} * (${isHT} + 1)" | bc
     elif [[ $# -eq 1 && $1 == "-v" ]]; then
         nCore=`cat /proc/cpuinfo | grep processor | wc -l`
-        echo -e "cores : ${nCore}"
+        echo "cores : ${nCore}"
         isHT=`cat /proc/cpuinfo | grep flags | uniq | grep ht | wc -l`
         nThread=`echo "${nCore} * (${isHT} + 1)" | bc`
-        echo -e "threads : $nThread"
+        echo "threads : $nThread"
     else
         echo "Usage : makej (-v)"
     fi
@@ -81,7 +81,7 @@ genIcons() {
                         convert -resize 144x144 ${img} ${icondir}/ic_launcher.png
                         echo "generate res/drawable-xxhdpi/ic_launcher.png";;
                     *)
-                        echo -e "unknown directory : ${icondir}"
+                        echo "unknown directory : ${icondir}"
                 esac
             done
         fi
