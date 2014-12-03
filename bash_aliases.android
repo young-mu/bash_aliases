@@ -9,6 +9,7 @@ alias jd-gui='~/Tools/jd-gui/jd-gui'
 alias dp='adb shell input keyevent KEYCODE_POWER'
 
 # get AndroidManifest from apk into current directory
+# NOTE : apktool need to be installed
 getAM() {
     if [[ ! "$1" =~ .apk$ ]]; then
         echo "Usage : getAM <apk>"
