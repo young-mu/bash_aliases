@@ -30,6 +30,7 @@ alias slm='sublime-text'    # sublime-text
 
 # Inner Functions
 fls() {
+    # FIXME: change it to general format
     local F
     F=""
     for i in `cat ~/.bash_aliases | sed -n "/() {/s/\([a-z]*\).*/\1/p" | sort`; do
@@ -37,9 +38,16 @@ fls() {
     done
     echo $F
     F=""
-    if [[ -f ~/.bash_aliases.local ]]; then
-        for j in `cat ~/.bash_aliases.local | sed -n "/() {/s/\([a-z]*\).*/\1/p" | sort`; do
+    if [[ -f ~/.bash_aliases.android ]]; then
+        for j in `cat ~/.bash_aliases.android | sed -n "/() {/s/\([a-z]*\).*/\1/p" | sort`; do
             F="$F $j"
+        done
+    fi
+    echo $F
+    F=""
+    if [[ -f ~/.bash_aliases.local ]]; then
+        for k in `cat ~/.bash_aliases.local | sed -n "/() {/s/\([a-z]*\).*/\1/p" | sort`; do
+            F="$F $k"
         done
     fi
     echo $F
