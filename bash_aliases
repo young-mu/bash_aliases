@@ -181,6 +181,20 @@ ffo() {
     fi
 }
 
+# convert from dec to hex or from hex to dec
+con() {
+    if [[ $# -ne 1 ]]; then
+        echo "Usage: con <dec>|0x<hex>"
+    else
+        if [[ $1 =~ ^0x ]]; then
+            printf "%d\n" $1
+        else
+            ret=`printf "%x\n" $1`
+            echo 0x${ret}
+        fi
+    fi
+}
+
 # source android aliases
 if [[ -f ~/.bash_aliases.android ]]; then
     source ~/.bash_aliases.android
