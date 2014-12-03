@@ -176,6 +176,7 @@ ffo() {
         if [[ ${findnum} -eq 0 ]]; then
             echo "$1 NOT found!"
         elif [[ ${findnum} -eq 1 ]]; then
+            echo "$findres"
             vim ${findres}
         elif [[ ${findnum} -ge 1 ]]; then
             declare -i n=1
