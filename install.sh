@@ -11,8 +11,6 @@ if [[ -f ~/.bash_aliases.local ]]; then
     if [[ ${answer} == 'Y' ]]; then
         echo "3. update ~/.bash_aliases.local"
         cp ./bash_aliases.local ~/.bash_aliases.local
-    else
-        echo "unknown choice"
     fi
 else
     echo "3. install ~/.bash_aliases.local"
