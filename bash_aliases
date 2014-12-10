@@ -30,27 +30,15 @@ alias slm='sublime-text'    # sublime-text
 
 # Inner Functions
 fls() {
-    # FIXME: change it to general format
-    local F
-    F=""
-    for i in `cat ~/.bash_aliases | sed -n "/() {/s/\([a-zA-Z]*\).*/\1/p" | sort`; do
-        F="$F $i"
+    alias_files=`ls ~/.bash_aliases*`
+    for alias_file in ${alias_files}; do
+        local F
+        F=""
+        for i in `cat ${alias_file} | sed -n "/() {/s/\([a-zA-Z]*\).*/\1/p" | sort`; do
+            F="$F $i"
+        done
+        echo "${alias_file/\/home\/young\//} :$F"
     done
-    echo $F
-    F=""
-    if [[ -f ~/.bash_aliases.android ]]; then
-        for j in `cat ~/.bash_aliases.android | sed -n "/() {/s/\([a-zA-Z]*\).*/\1/p" | sort`; do
-            F="$F $j"
-        done
-    fi
-    echo $F
-    F=""
-    if [[ -f ~/.bash_aliases.local ]]; then
-        for k in `cat ~/.bash_aliases.local | sed -n "/() {/s/\([a-zA-Z]*\).*/\1/p" | sort`; do
-            F="$F $k"
-        done
-    fi
-    echo $F
 }
 
 # display PATH each line
