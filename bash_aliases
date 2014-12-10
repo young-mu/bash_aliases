@@ -33,20 +33,20 @@ fls() {
     # FIXME: change it to general format
     local F
     F=""
-    for i in `cat ~/.bash_aliases | sed -n "/() {/s/\([a-z]*\).*/\1/p" | sort`; do
+    for i in `cat ~/.bash_aliases | sed -n "/() {/s/\([a-zA-Z]*\).*/\1/p" | sort`; do
         F="$F $i"
     done
     echo $F
     F=""
     if [[ -f ~/.bash_aliases.android ]]; then
-        for j in `cat ~/.bash_aliases.android | sed -n "/() {/s/\([a-z]*\).*/\1/p" | sort`; do
+        for j in `cat ~/.bash_aliases.android | sed -n "/() {/s/\([a-zA-Z]*\).*/\1/p" | sort`; do
             F="$F $j"
         done
     fi
     echo $F
     F=""
     if [[ -f ~/.bash_aliases.local ]]; then
-        for k in `cat ~/.bash_aliases.local | sed -n "/() {/s/\([a-z]*\).*/\1/p" | sort`; do
+        for k in `cat ~/.bash_aliases.local | sed -n "/() {/s/\([a-zA-Z]*\).*/\1/p" | sort`; do
             F="$F $k"
         done
     fi
