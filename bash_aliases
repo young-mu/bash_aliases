@@ -116,6 +116,7 @@ fox() {
             note) firefox -new-tab "http://note.youdao.com";;
             126) firefox -new-tab "http://www.126.com";;
             md) firefox -new-tab "http://mahua.jser.me";;
+            oda) firefox -new-tab "http://www2.onlinedisassembler.com/odaweb";;
             *) firefox -search $1
         esac
     fi
@@ -138,6 +139,7 @@ gc() {
             note) google-chrome "http://note.youdao.com";;
             126) google-chrome "http://www.126.com";;
             md) google-chrome "http://mahua.jser.me";;
+            oda) google-chrome "http://www2.onlinedisassembler.com/odaweb";;
             *) echo "no <$1> item."
         esac
     fi
