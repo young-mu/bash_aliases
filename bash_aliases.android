@@ -88,3 +88,16 @@ genIcons() {
         fi
     fi
 }
+
+# clear apk (force-stop and clear data and cache)
+# NOTE: the status "success" is result of "pm clear"
+cls() {
+    if [[ $# -ne 1 ]]; then
+        echo "Usage: cls <apk>"
+    else
+        apk=$1
+        package=`aapt d badging ${apk} | grep package | awk -F\' '{print $2}'`
+        adb shell am force-stop ${package}
+        adb shell pm clear ${package}
+    fi
+}
