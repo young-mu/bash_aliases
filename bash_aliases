@@ -156,6 +156,29 @@ go() {
     fi
 }
 
+# generate current project filelist for quick searching
+genfl() {
+    if [[ -d .git ]]; then
+        exclude="\.git"
+    elif [[ -d .svn ]]; then
+        exclude=".svn"
+    else
+        exclude="*"
+    fi
+    if [[ -e ./filelist ]]; then
+        rm ./filelist
+        echo "update filelist"
+    else
+        echo "create filelist"
+    fi
+    files=`find . -type f -name "*" | grep -vwe ${exclude}`
+    for file in ${files}; do
+        bfile=`basename ${file}`
+        ffile=${file/./$(pwd)}
+        echo "${bfile} ${ffile}" >> ./filelist
+    done
+}
+
 # find file and open it
 ffo() {
     if [[ $# -ne 1 ]]; then
@@ -183,12 +206,10 @@ ffo() {
 }
 
 _ffo_autocomp() {
-    local curw
-    local files
+    filelist=/home/young/filelist
     curw=${COMP_WORDS[COMP_CWORD]}
-#    files=(`cat ./filelist`)
-#    COMPREPLY=(`compgen -W '${files[@]}' -- $curw`)
-    COMPREPLY=(`compgen -W '123 456 789' -- $curw`)
+    files=(`cat ${filelist}`)
+    COMPREPLY=(`compgen -W '${files[@]}' -- $curw`)
 }
 complete -F _ffo_autocomp ffo
 
