@@ -182,6 +182,16 @@ ffo() {
     fi
 }
 
+_ffo_autocomp() {
+    local curw
+    local files
+    curw=${COMP_WORDS[COMP_CWORD]}
+#    files=(`cat ./filelist`)
+#    COMPREPLY=(`compgen -W '${files[@]}' -- $curw`)
+    COMPREPLY=(`compgen -W '123 456 789' -- $curw`)
+}
+complete -F _ffo_autocomp ffo
+
 # convert from dec to hex or from hex to dec
 con() {
     if [[ $# -ne 1 ]]; then
