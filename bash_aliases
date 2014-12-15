@@ -210,6 +210,13 @@ qo() {
     fi
 }
 
+_qo_autocomp() {
+    curw=${COMP_WORDS[COMP_CWORD]}
+    files=(`cat ${filelist} | awk '{print $1}' | uniq`)
+    COMPREPLY=(`compgen -W '${files[@]}' -- $curw`)
+}
+complete -F _qo_autocomp qo
+
 # find file and open it
 ffo() {
     if [[ $# -ne 1 ]]; then
