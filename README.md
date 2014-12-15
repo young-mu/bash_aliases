@@ -8,4 +8,4 @@ Usage:
 \# ./install.sh
 </pre></code>
 
-NOTE: modify filelist in bash\_aliases
+NOTE: modify filelist in ~/.bash\_aliases
