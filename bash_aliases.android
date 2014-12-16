@@ -144,3 +144,12 @@ gengdb() {
     echo "target remote :2000" >> ${gdbfile}
     echo "./${gdbfile} is generated."
 }
+
+# repo sync
+reposync() {
+    repo sync -j5
+    while [[ $? -eq 1 ]]; do
+        sleep 3
+        repo sync -j5
+    done
+}
