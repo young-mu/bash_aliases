@@ -1,12 +1,19 @@
 # Android releated aliases
-alias d='adb shell'
+
+# directory switch
+alias K='cd ~/AOSP/Kitkat; source build/envsetup.sh 1> /dev/null'
 alias L='cd ~/AOSP/Lollipop; source build/envsetup.sh 1> /dev/null'
 alias flo='cd ~/AOSP/Lollipop/out/target/product/flo;'
+
+# internal tools
+alias d='adb shell'
+alias dp='adb shell input keyevent KEYCODE_POWER'
 alias nb='ndk-build'
 alias apk='aapt d badging'
+
+# external tools
 alias dex2jar='~/Tools/dex2jar/dex2jar-0.0.9.15/d2j-dex2jar.sh'
 alias jd-gui='~/Tools/jd-gui/jd-gui'
-alias dp='adb shell input keyevent KEYCODE_POWER'
 
 # get AndroidManifest from apk into current directory
 # NOTE : apktool need to be installed
