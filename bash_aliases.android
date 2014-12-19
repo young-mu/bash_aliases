@@ -101,11 +101,25 @@ genIcons() {
 pkg() {
     if [[ $# -ne 1 ]]; then
         echo "Usage: pkg <apk>"
-    else apk=$1
+    else
+        apk=$1
         package=`aapt d badging ${apk} | grep package | awk -F\' '{print $2}'`
         echo $package
     fi
 }
+
+# TODO: merge apk/pkg/ver to one command
+# get version of apk
+ver() {
+    if [[ $# -ne 1 ]]; then
+        echo "Usage: ver <apk>"
+    else
+        apk=$1
+        version=`aapt d badging ${apk} | grep package | awk -F\' '{print $6}'`
+        echo $version
+    fi
+}
+
 
 # clear apk (force-stop and clear data and cache)
 # NOTE: the status "success" is result of "pm clear"
