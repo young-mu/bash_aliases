@@ -1,8 +1,12 @@
 #!/bin/bash
 
-# TODO:
-# 1. echo 'source bashrc.local' to ~/.bashrc if no
-# 2. merge vimrc / tmux / bash_aliases together
+if [[ ! `cat ~/.bashrc | grep "bashrc\.local"` ]]; then
+    echo -e "\n# source ~/.bashrc.local" >> ~/.bashrc
+    echo "if [ -f ~/.bashrc.local ]; then" >> ~/.bashrc
+    echo "    . ~/.bashrc.local" >> ~/.bashrc
+    echo "fi" >> ~/.bashrc
+fi
+
 echo "0. install ~/.bashrc.local"
 cp ./bashrc ~/.bashrc.local
 
