@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# TODO:
+# 1. echo 'source bashrc.local' to ~/.bashrc if no
+# 2. merge vimrc / tmux / bash_aliases together
+echo "0. install ~/.bashrc.local"
+cp ./bashrc ~/.bashrc.local
+
 echo "1. install ~/.bash_aliases"
 cp ./bash_aliases ~/.bash_aliases
 
