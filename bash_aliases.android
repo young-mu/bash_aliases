@@ -2,9 +2,9 @@
 
 # directory switch
 alias K='cd ~/AOSP/Kitkat; source build/envsetup.sh 1> /dev/null'
-alias n5='cd ~/AOSP/Kitkat/out/target/product/hammerhead'
+alias kp='cd ~/AOSP/Kitkat/out/target/product'
 alias L='cd ~/AOSP/Lollipop; source build/envsetup.sh 1> /dev/null'
-alias n7='cd ~/AOSP/Lollipop/out/target/product/flo;'
+alias lp='cd ~/AOSP/Lollipop/out/target/product;'
 
 # internal tools
 alias d='adb shell'
