@@ -175,3 +175,16 @@ reposync() {
         repo sync -j5
     done
 }
+
+# get package to be imported by querying android.jar
+# NOTE: Android SDK must be placed in directory of ANDROID_SDK
+impkg() {
+    if [[ $# -ne 2 ]]; then
+        echo "Usage: impkg <version> <keyword>"
+    else
+        version=$1
+        keyword=$2
+        jarPath=${ANDROID_SDK}/platforms/android-${version}
+        jar tf ${jarPath}/android.jar | grep ".*\.class" | grep "${keyword}"
+    fi
+}
