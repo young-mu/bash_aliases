@@ -13,7 +13,7 @@ cp ./bashrc ~/.bashrc.local
 echo "1. install ~/.bash_aliases"
 cp ./bash_aliases ~/.bash_aliases
 
-echo "2. install ~/.bash_aliases.android"
+echo "2. install ~/.bash_aliases.android and ~/.proj.tar.gz"
 cp ./bash_aliases.android ~/.bash_aliases.android
 cp ./proj.tar.gz ~/.proj.tar.gz
 
