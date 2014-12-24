@@ -61,7 +61,9 @@ makej() {
 }
 
 # convert one image to multiple-dpi icons
-# NOTE : imagemagick need to be installed
+# NOTE :
+# 1. imagemagick need to be installed
+# 2. execute in the root directory of project
 genIcons() {
     if [[ ! -e ./AndroidManifest.xml ]]; then
         echo "NO Android project here."
@@ -201,4 +203,18 @@ fbimg() {
     fastboot flash system system.img
     fastboot flash userdata userdata.img
     fastboot reboot
+}
+
+# make one simple android project
+mproj() {
+    if [[ $# -ne 1 ]]; then
+        echo "Usage: mproj <name>"
+    else
+        name=$1
+        mkdir ${name}
+        tar xzvf ~/.proj.tar.gz -C ./${name} --strip 1 1> /dev/null
+        mv ./${name}/src/com/young/xxx ./${name}/src/com/young/${name}
+        xxxFiles=`grep -r "xxx" ./${name} | awk -F: '{print $1}' | sort | uniq`
+        sed -i "s/xxx/${name}/g" ${xxxFiles}
+    fi
 }
