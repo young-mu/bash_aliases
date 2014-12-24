@@ -15,6 +15,7 @@ cp ./bash_aliases ~/.bash_aliases
 
 echo "2. install ~/.bash_aliases.android"
 cp ./bash_aliases.android ~/.bash_aliases.android
+cp ./proj.tar.gz ~/.proj.tar.gz
 
 if [[ -f ~/.bash_aliases.local ]]; then
     read -p "~/.bash_aliases.local exists! Do you want to overwrite it? [Y] : " answer
