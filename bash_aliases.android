@@ -34,12 +34,11 @@ getAM() {
 
 # android screencap
 sc() {
-    if [[ $# -eq 0 ]]; then
+    if [[ `adb devices | grep -w device` ]]; then
         adb shell screencap -p | sed 's/\r$//' > screen.png
         echo "./screen.png is generated"
-    elif [[ $# -eq 1 ]]; then
-        adb shell screencap -p | sed 's/\r$//' > ${1}.png
-        echo "./${1}.png is generated"
+    else
+        echo "no device connected."
     fi
 }
 

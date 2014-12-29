@@ -26,7 +26,7 @@ alias lk='gnome-screensaver-command -l'
 alias ds='display'          # imagemagick
 alias lx='xelatex'          # texlive-full
 alias tm='tmux -2'          # tmux
-alias slm='sublime-text'    # sublime-text
+alias st='sublime-text'     # sublime-text
 
 # Inner Functions
 fls() {
@@ -255,6 +255,15 @@ con() {
             echo 0x${ret}
         fi
     fi
+}
+
+# screenshot
+sct() {
+    if [[ ! -d ~/Scrots ]]; then
+        mkdir ~/Scrots
+    fi
+    scrot -s -e 'mv $f ~/Scrots/'
+    echo "screenshot is generated under ~/Scrots"
 }
 
 # source android aliases
