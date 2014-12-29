@@ -137,7 +137,6 @@ cls() {
 }
 
 # gdbserver attach (device)
-# NOTE: /data/gdbserver needs to be installed in advance
 gdbserver() {
     if [[ $# -ne 1 ]]; then
         echo "Usage: gdbserver <apk>"
@@ -154,7 +153,7 @@ gdbserver() {
             pid=`adb shell ps | grep ${package} | awk '{print $2}'`
         done
         echo "Now try to attach to PID $pid ..."
-        adb shell /data/gdbserver :1234 --attach ${pid}
+        adb shell gdbserver :1234 --attach ${pid}
     fi
 }
 
@@ -217,4 +216,10 @@ mproj() {
         xxxFiles=`grep -r "xxx" ./${name} | awk -F: '{print $1}' | sort | uniq`
         sed -i "s/xxx/${name}/g" ${xxxFiles}
     fi
+}
+
+# adb strace
+adb_strace() {
+    zygotePID=`adb shell ps | grep zygote | awk '{print $2}'`
+    adb shell strace -i -f -p ${zygotePID}
 }
