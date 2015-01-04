@@ -141,6 +141,7 @@ gc() {
             md) google-chrome "http://mahua.jser.me";;
             oda) google-chrome "http://www2.onlinedisassembler.com/odaweb";;
             cwm) google-chrome "https://www.clockworkmod.com/rommanager";;
+            cm) google-chrome "http://www.cyanogenmod.org/";;
             *) echo "no <$1> item."
         esac
     fi
