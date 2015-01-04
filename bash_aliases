@@ -140,6 +140,7 @@ gc() {
             126) google-chrome "http://www.126.com";;
             md) google-chrome "http://mahua.jser.me";;
             oda) google-chrome "http://www2.onlinedisassembler.com/odaweb";;
+            cwm) google-chrome "https://www.clockworkmod.com/rommanager";;
             *) echo "no <$1> item."
         esac
     fi
