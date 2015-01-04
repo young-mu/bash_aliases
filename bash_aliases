@@ -117,6 +117,8 @@ fox() {
             126) firefox -new-tab "http://www.126.com";;
             md) firefox -new-tab "http://mahua.jser.me";;
             oda) firefox -new-tab "http://www2.onlinedisassembler.com/odaweb";;
+            cwm) firefox -new-tab "https://www.clockworkmod.com/rommanager";;
+            cm) firefox -new-tab "http://www.cyanogenmod.org";;
             *) firefox -search $1
         esac
     fi
@@ -141,7 +143,7 @@ gc() {
             md) google-chrome "http://mahua.jser.me";;
             oda) google-chrome "http://www2.onlinedisassembler.com/odaweb";;
             cwm) google-chrome "https://www.clockworkmod.com/rommanager";;
-            cm) google-chrome "http://www.cyanogenmod.org/";;
+            cm) google-chrome "http://www.cyanogenmod.org";;
             *) echo "no <$1> item."
         esac
     fi
