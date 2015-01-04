@@ -266,6 +266,15 @@ sct() {
     echo "screenshot is generated under ~/Scrots"
 }
 
+# md5sum check
+md5() {
+    if [[ $# -ne 2 ]]; then
+        echo "Usage: md5 <file> <md5sum>"
+    else
+        md5sum $1 | grep "$2"
+    fi
+}
+
 # source android aliases
 if [[ -f ~/.bash_aliases.android ]]; then
     source ~/.bash_aliases.android
