@@ -27,6 +27,7 @@ alias ds='display'          # imagemagick
 alias lx='xelatex'          # texlive-full
 alias tm='tmux -2'          # tmux
 alias st='sublime-text'     # sublime-text
+alias diff='colordiff'      # colordiff
 
 # Inner Functions
 fls() {
