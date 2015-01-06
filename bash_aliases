@@ -280,6 +280,17 @@ md5() {
     fi
 }
 
+# git proxy (replace git with socks5)
+# NOTE: config git core.gitproxy as gitproxy in advance
+gitproxy() {
+    _gitproxy=`echo {socks_proxy} | sed -e "s/socks:\/\/\(.*\)/\1/" -e "s/\(.*\)\//\1/"`
+    case $1 in
+        *intel.com) METHOD="-Xconnect";;
+        *) METHOD="-X5 -x${_gitproxy}";;
+    esac
+    nc $METHOD $@
+}
+
 # source android aliases
 if [[ -f ~/.bash_aliases.android ]]; then
     source ~/.bash_aliases.android
