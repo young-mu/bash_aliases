@@ -281,7 +281,9 @@ md5() {
 }
 
 # git proxy (replace git with socks5)
-# NOTE: config git core.gitproxy as gitproxy in advance
+# NOTE:
+# 1. config git core.gitproxy as gitproxy in advance
+# 2. copy its content to /usr/local/bin/gitproxy
 gitproxy() {
     _gitproxy=`echo {socks_proxy} | sed -e "s/socks:\/\/\(.*\)/\1/" -e "s/\(.*\)\//\1/"`
     case $1 in
