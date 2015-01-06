@@ -10,7 +10,6 @@ alias lp='cd ~/AOSP/Lollipop/out/target/product;'
 alias d='adb shell'
 alias dp='adb shell input keyevent KEYCODE_POWER'
 alias nb='ndk-build'
-alias apk='aapt d badging'
 
 # external tools
 alias dex2jar='~/Tools/dex2jar/dex2jar-0.0.9.15/d2j-dex2jar.sh'
@@ -98,29 +97,26 @@ genIcons() {
     fi
 }
 
-# get package name of apk
-pkg() {
-    if [[ $# -ne 1 ]]; then
-        echo "Usage: pkg <apk>"
+# get pakcage info
+apk() {
+    if [ $# -ne 1 -a $# -ne 2 ]; then
+        echo "Usage: apk [n|v|p] <apk>"
     else
-        apk=$1
-        package=`aapt d badging ${apk} | grep package | awk -F\' '{print $2}'`
-        echo $package
+        if [ $# -eq 1 ]; then
+            aapt d badging $1
+        elif [ $# -eq 2 ]; then
+            case "$1" in
+                # package name
+                n) aapt d badging $2 | grep package | awk -F\' '{print $2}';;
+                # app version
+                v) aapt d badging $2 | grep package | awk -F\' '{print $6}';;
+                # permission
+                p) aapt d badging $2 | grep uses-permission | awk -F\' '{print $2}';;
+                *) echo "unsupported option: $1";;
+            esac
+        fi
     fi
 }
-
-# TODO: merge apk/pkg/ver to one command
-# get version of apk
-ver() {
-    if [[ $# -ne 1 ]]; then
-        echo "Usage: ver <apk>"
-    else
-        apk=$1
-        version=`aapt d badging ${apk} | grep package | awk -F\' '{print $6}'`
-        echo $version
-    fi
-}
-
 
 # clear apk (force-stop and clear data and cache)
 # NOTE: the status "success" is result of "pm clear"
