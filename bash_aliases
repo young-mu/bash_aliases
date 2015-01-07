@@ -280,6 +280,27 @@ md5() {
     fi
 }
 
+# print code lines
+lines() {
+    if [ $# -ne 1 ]; then
+        echo "Usage: lines [c|cpp|java|sh|...]"
+    else
+        case "$1" in
+            c) out=1 option="-regex" file=".*.c\|.*.h";;
+            cpp) out=1 option="-regex" file=".*.cpp\|.*.h";;
+            java) out=1 option="-name" file="*.java";;
+            sh) out=1 option="-name" file="*.sh";;
+            *) out=0;;
+        esac
+        if [ ${out} -eq 1 ]; then
+            find . ${option} ${file} | xargs wc -l
+        else
+            echo "unsupported file class";
+        fi
+    fi
+}
+
+
 # source android aliases
 if [[ -f ~/.bash_aliases.android ]]; then
     source ~/.bash_aliases.android
