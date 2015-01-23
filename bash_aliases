@@ -21,6 +21,8 @@ alias g+='g++ -o test test.cpp && ./test'
 alias jt='javac test.java && java test'
 alias agi='sudo apt-get install -y'
 alias lk='gnome-screensaver-command -l'
+alias syscall_32='cat /usr/include/x86_64-linux-gnu/asm/unistd_32.h'
+alias syscall_64='cat /usr/include/x86_64-linux-gnu/asm/unistd_64.h'
 
 # External Commands Abbr.
 alias ds='display'          # imagemagick
