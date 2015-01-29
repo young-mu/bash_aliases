@@ -30,6 +30,7 @@ alias lx='xelatex'          # texlive-full
 alias tm='tmux -2'          # tmux
 alias st='sublime-text'     # sublime-text
 alias diff='colordiff'      # colordiff
+alias ccolab='~/Tools/ccollab/ccollab-client/ccollabgui' # ccolab
 
 # Inner Functions
 fls() {
