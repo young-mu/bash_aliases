@@ -198,7 +198,7 @@ qo() {
         echo "Usage: qo <file>"
     else
         findres=`cat ${filelist} | grep -w "$1" | awk '{print $2}'`
-        findnum=`echo ${findres} | grep . | wc -l`
+        findnum=`echo ${findres} | awk '{print NF}'`
         if [[ ${findnum} -eq 0 ]]; then
             echo "$1 NOT found!"
         elif [[ ${findnum} -eq 1 ]]; then
