@@ -191,6 +191,7 @@ fbimg() {
     echo "wait for 5 seconds to enter fastboot mode ..."
     sleep 5
     echo "start to flash ..."
+    fastboot -w
     fastboot flash boot boot.img
     fastboot flash cache cache.img
     fastboot flash recovery recovery.img
