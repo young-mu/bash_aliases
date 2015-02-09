@@ -10,6 +10,7 @@ alias lp='cd ~/AOSP/Lollipop/out/target/product;'
 alias d='adb shell'
 alias dp='adb shell input keyevent KEYCODE_POWER'
 alias nb='ndk-build'
+alias adb-restart='adb kill-server; adb start-server'
 
 # external tools
 alias dex2jar='~/Tools/dex2jar/dex2jar-0.0.9.15/d2j-dex2jar.sh'
