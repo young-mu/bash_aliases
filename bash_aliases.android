@@ -15,6 +15,8 @@ alias adb-restart='adb kill-server; adb start-server'
 # external tools
 alias dex2jar='~/Tools/dex2jar/dex2jar-0.0.9.15/d2j-dex2jar.sh'
 alias jd-gui='~/Tools/jd-gui/jd-gui'
+alias studio='~/Android/android-studio/bin/studio.sh'
+alias arm-gcc='arm-linux-androideabi-gcc --sysroot=/home/young/Android/android-ndk-r10d/platforms/android-21/arch-arm'
 
 # get AndroidManifest from apk into current directory
 # NOTE : apktool need to be installed
@@ -158,9 +160,9 @@ gengdb() {
     gdbfile="conf.gdb"
     curpath=`pwd`
     echo "file lib/app_process" > ${gdbfile}
-    echo "set solib-search-path ${curpath}/lib" >> ${gdbfile}
     echo "shell adb forward tcp:2000 tcp:1234" >> ${gdbfile}
     echo "target remote :2000" >> ${gdbfile}
+    echo "set solib-search-path ${curpath}/lib" >> ${gdbfile}
     echo "./${gdbfile} is generated."
 }
 
