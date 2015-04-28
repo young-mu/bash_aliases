@@ -4,7 +4,8 @@
 alias K='cd ~/AOSP/Kitkat; source build/envsetup.sh 1> /dev/null'
 alias kp='cd ~/AOSP/Kitkat/out/target/product'
 alias L='cd ~/AOSP/Lollipop; source build/envsetup.sh 1> /dev/null'
-alias lp='cd ~/AOSP/Lollipop/out/target/product;'
+alias lp='cd ~/AOSP/Lollipop/out/target/product'
+alias bio='cd ~/AOSP/Lollipop/bionic'
 
 # internal tools
 alias d='adb shell'
