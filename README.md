@@ -1,6 +1,6 @@
 bash\_aliases
 ============
-my own bash aliases configuration files
+my own bash aliases configuration files for ArchLinux for RaspberryPi2
 
 Usage:
 <pre><code>

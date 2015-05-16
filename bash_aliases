@@ -3,8 +3,6 @@ alias c='clear'
 alias e='exit'
 alias s='source'
 alias p='pwd'
-alias g='gedit'
-alias op='xdg-open'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -19,21 +17,13 @@ alias fd='find . -type d -name'
 alias gt='gcc -o test test.c && ./test'
 alias g+='g++ -o test test.cpp && ./test'
 alias jt='javac test.java && java test'
-alias agi='sudo apt-get install -y'
-alias lk='gnome-screensaver-command -l'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-alias syscall_32='cat /usr/include/x86_64-linux-gnu/asm/unistd_32.h'
-alias syscall_64='cat /usr/include/x86_64-linux-gnu/asm/unistd_64.h'
+alias syscall='cat /usr/include/asm/unistd.h'
 
 # External Commands Abbr.
-alias ds='display'          # imagemagick
-alias lx='xelatex'          # texlive-full
-alias tm='tmux -2'          # tmux
-alias st='sublime-text'     # sublime-text
 alias diff='colordiff'      # colordiff
-alias ccolab='~/Tools/ccollab/ccollab-client/ccollabgui' # ccolab
 
 # Inner Functions
 fls() {
@@ -110,61 +100,6 @@ num() {
     fileNum=`ls -1 -F | sed "/\/$/d" | wc -l`
     dirNum=`ls -1 -F | grep "/$" | wc -l`
     echo "${fileNum} files, ${dirNum} directories"
-}
-
-# firefox command (default search engine : baidu)
-fox() {
-    if [[ $# -eq 0 ]]; then
-        firefox
-    elif [[ $# -eq 1 ]]; then
-        case "$1" in
-            git) firefox -new-tab "http://github.com/young-mu";;
-            xref) firefox -new-tab "http://androidxref.com";;
-            note) firefox -new-tab "http://note.youdao.com";;
-            126) firefox -new-tab "http://www.126.com";;
-            md) firefox -new-tab "http://mahua.jser.me";;
-            oda) firefox -new-tab "http://www2.onlinedisassembler.com/odaweb";;
-            cwm) firefox -new-tab "https://www.clockworkmod.com/rommanager";;
-            cm) firefox -new-tab "http://www.cyanogenmod.org";;
-            *) firefox -search $1
-        esac
-    fi
-}
-
-# google-chrome command (default page : google)
-gc() {
-    if [[ $# -eq 0 ]]; then
-        google-chrome "http://www.google.com"
-    elif [[ $# -eq 1 ]]; then
-        case "$1" in
-            gmail) google-chrome "http://gmail.google.com";;
-            trans) google-chrome "http://translate.google.com";;
-            src) google-chrome "http://source.android.com";;
-            dev) google-chrome "http://developer.android.com";;
-            repot) google-chrome "https://android.googlesource.com";;
-            play) google-chrome "http://play.google.com";;
-            git) google-chrome "http://github.com/young-mu";;
-            xref) google-chrome "http://androidxref.com";;
-            note) google-chrome "http://note.youdao.com";;
-            126) google-chrome "http://www.126.com";;
-            md) google-chrome "http://mahua.jser.me";;
-            oda) google-chrome "http://www2.onlinedisassembler.com/odaweb";;
-            cwm) google-chrome "https://www.clockworkmod.com/rommanager";;
-            cm) google-chrome "http://www.cyanogenmod.org";;
-            *) echo "no <$1> item."
-        esac
-    fi
-}
-
-# open git project in github
-go() {
-    REMOTE=`git remote -v 2> /dev/null`
-    if [[ $? -ne 0 ]]; then
-        echo "NO git project here."
-    else
-        URL=`echo ${REMOTE} | awk '{print $2}'`
-        google-chrome ${URL}
-    fi
 }
 
 # generate current project filelist for quick searching
@@ -268,15 +203,6 @@ con() {
     fi
 }
 
-# screenshot
-sct() {
-    if [[ ! -d ~/Scrots ]]; then
-        mkdir ~/Scrots
-    fi
-    scrot -s -e 'mv $f ~/Scrots/'
-    echo "screenshot is generated under ~/Scrots"
-}
-
 # md5sum check
 md5() {
     if [[ $# -ne 2 ]]; then
@@ -305,14 +231,3 @@ lines() {
         fi
     fi
 }
-
-
-# source android aliases
-if [[ -f ~/.bash_aliases.android ]]; then
-    source ~/.bash_aliases.android
-fi
-
-# source local aliases
-if [[ -f ~/.bash_aliases.local ]]; then
-    source ~/.bash_aliases.local
-fi
