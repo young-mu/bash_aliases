@@ -1,5 +1,3 @@
-# bashrc.local
-
 # refresh PS1
 PS1='
 \[\e[0m\]<\
@@ -11,3 +9,6 @@ PS1='
 
 # diable Ctrl-s and Ctrl-q
 stty -ixon
+
+# source bash_aliases
+source ~/.bash_aliases

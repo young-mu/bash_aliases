@@ -10,6 +10,7 @@ alias ....='cd ../../..'
 # Internal Commands Extd.
 alias n='wc -l'
 alias rm='rm -I'
+alias ls='ls --color=auto'
 alias lh='ls -lh --color=auto'
 alias hs='history | grep --color=auto -i'
 alias ff='find . -type f -name'
@@ -34,7 +35,7 @@ fls() {
         for i in `cat ${alias_file} | sed -n "/() {/s/\([a-zA-Z]*\).*/\1/p" | sort`; do
             F="$F $i"
         done
-        echo "${alias_file/\/home\/young\//} :$F"
+        echo "${alias_file/\/home\/pi\//} :$F"
     done
 }
 
@@ -128,7 +129,7 @@ genfl() {
 }
 
 # filelist defined here
-filelist=/home/young/<proj>/trunk/src/filelist
+filelist=/home/pi/GPIO/wiringPi/filelist
 
 # quick open by indexing file in filelist
 qo() {
