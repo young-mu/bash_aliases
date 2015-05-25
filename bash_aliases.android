@@ -137,9 +137,9 @@ cls() {
 
 # gdbserver attach (device)
 gdbserver() {
-    if [[ $# -ne 1 ]]; then
-        echo "Usage: gdbserver <apk>"
-    else
+    if [[ $# -eq 0 ]]; then
+        echo "Usage: gdbserver [j] <apk>"
+    elif [[ $# -eq 1 ]]; then
         apk=$1
         action="android.intent.action.MAIN"
         package=`aapt d badging ${apk} | grep package | awk -F\' '{print $2}'`
@@ -153,6 +153,13 @@ gdbserver() {
         done
         echo "Now try to attach to PID $pid ..."
         adb shell gdbserver :1234 --attach ${pid}
+    elif [[ $# -eq 2 && $1 == 'j' ]]; then
+        apk=$2
+        package=`aapt d badging ${apk} | grep package | awk -F\' '{print $2}'`
+        pid=`adb shell ps | grep ${package} | awk '{print $2}'`
+        adb shell gdbserver :1234 --attach ${pid} &
+        adb forward tcp:8001 jdwp:${pid}
+        jdb -attach localhost:8001
     fi
 }
 
