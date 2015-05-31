@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "1. install ~/.bashrcl"
+echo "1. install ~/.bashrc"
 cp ./bashrc ~/.bashrc
 
 echo "2. install ~/.bash_aliases"
