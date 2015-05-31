@@ -23,8 +23,6 @@ alias lk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-alias syscall_32='cat /usr/include/x86_64-linux-gnu/asm/unistd_32.h'
-alias syscall_64='cat /usr/include/x86_64-linux-gnu/asm/unistd_64.h'
 
 # External Commands Abbr.
 alias ds='display'          # imagemagick
