@@ -1,6 +1,6 @@
 bash\_aliases
 ============
-my own bash aliases configuration files
+my own bash aliases configuration files on Mac OSX
 
 Usage:
 <pre><code>
