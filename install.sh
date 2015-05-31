@@ -7,8 +7,9 @@ if [[ ! `cat ~/.bashrc | grep "bashrc\.local"` ]]; then
     echo "fi" >> ~/.bashrc
 fi
 
-echo "0. install ~/.bashrc.local"
+echo "0. install ~/.bashrc.local and ~/.git-prompt.sh"
 cp ./bashrc ~/.bashrc.local
+cp ./git-prompt.sh ~/.git-prompt.sh
 
 echo "1. install ~/.bash_aliases"
 cp ./bash_aliases ~/.bash_aliases
