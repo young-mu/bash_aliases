@@ -8,4 +8,6 @@ Usage:
 \# ./install.sh
 </pre></code>
 
-NOTE: modify filelist in ~/.bash\_aliases
+NOTE:
+* add source ~/.bashrc and ~/.bash\_aliases in /etc/bashrc
+* modify filelist in ~/.bash\_aliases
