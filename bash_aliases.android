@@ -169,11 +169,12 @@ gdbserver() {
 
 # generate gdb configuration file (host)
 gengdb() {
-    gdbfile="conf.gdb"
+    gdbfile="gdb.setup"
     curpath=`pwd`
     echo "shell adb forward tcp:2000 tcp:1234" >> ${gdbfile}
-    echo "target remote :2000" >> ${gdbfile}
     echo "set solib-search-path .:symbols/system/bin:symbols/system/lib" >> ${gdbfile}
+    echo "file ./symbols/system/bin/app_process32" >> ${gdbfile}
+    echo "target remote :2000" >> ${gdbfile}
     echo "./${gdbfile} is generated."
 }
 
