@@ -27,7 +27,7 @@ export PATH=${PATH}:${ANDROID_SDK}/build-tools/21.1.2
 export PATH=${PATH}:${ANDROID_SDK}/platform-tools
 
 # Android NDK
-export ANDROID_NDK=/home/young/Android/android-ndk-r10d
+export ANDROID_NDK=/home/young/Android/android-ndk-r10e
 # NDK tools
 export PATH=${PATH}:${ANDROID_NDK}
 # NDK cross-compile toolchains
