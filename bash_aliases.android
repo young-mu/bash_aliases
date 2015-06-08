@@ -25,13 +25,17 @@ getAM() {
     if [[ ! "$1" =~ .apk$ ]]; then
         echo "Usage : getAM <apk>"
     elif [[ "$1" =~ .apk$ ]]; then
-        apktool d $1 /tmp/tmpapk &> /dev/null
-        cp /tmp/tmpapk/AndroidManifest.xml ./
+        mkdir -p /tmp/tmpapk
+        cp $1 /tmp/tmpapk/
+        pushd /tmp/tmpapk &> /dev/null
+        apktool d $1 &> /dev/null
+        popd &> /dev/null
+        name=${1%%\.apk}
+        cp /tmp/tmpapk/$name/AndroidManifest.xml ./
         if [[ $? -eq 0 ]]; then
             echo "get AndroidManifest.xml ..."
         fi
         rm -rf /tmp/tmpapk
-        rm -rf ~/apktool
     fi
 }
 
