@@ -234,3 +234,17 @@ adb_strace() {
     zygotePID=`adb shell ps | grep zygote | awk '{print $2}'`
     adb shell strace -i -f -p ${zygotePID}
 }
+
+# download apk file from google play
+dlapk() {
+    if [ $# -ne 1 ]; then
+        echo "Usage: $0 <apk-url-in-googleplay>"
+    else
+        id=`echo $1 | awk -F'=' '{print $2}'`
+        echo "id: $id"
+        echo "start to download..."
+        dlurl="http://dl3.apk-dl.com/store/download/details?id=$id"
+        dlapk="$id.apk"
+        wget $dlurl -O $dlapk
+    fi
+}
