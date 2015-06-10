@@ -241,8 +241,6 @@ dlapk() {
         echo "Usage: $0 <apk-url-in-googleplay>"
     else
         id=`echo $1 | awk -F'=' '{print $2}'`
-        echo "id: $id"
-        echo "start to download..."
         dlurl="http://dl3.apk-dl.com/store/download/details?id=$id"
         dlapk="$id.apk"
         wget $dlurl -O $dlapk
