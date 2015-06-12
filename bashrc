@@ -40,3 +40,6 @@ export PATH=${PATH}:${ANDROID_NDK}/toolchains/arm-linux-androideabi-4.9/prebuilt
 
 # Android studio
 export PATH=${PATH}:/home/young/Android/android-studio/bin
+
+# suppress java log
+unset JAVA_TOOL_OPTIONS
