@@ -7,9 +7,10 @@ if [[ ! `cat ~/.bashrc | grep "bashrc\.local"` ]]; then
     echo "fi" >> ~/.bashrc
 fi
 
-echo "0. install ~/.bashrc.local and ~/.git-prompt.sh"
+echo "0. install ~/.bashrc.local, ~/.git-prompt.sh and ~/.adb.bash"
 cp ./bashrc ~/.bashrc.local
 cp ./git-prompt.sh ~/.git-prompt.sh
+cp ./adb.bash ~/.adb.bash
 
 echo "1. install ~/.bash_aliases"
 cp ./bash_aliases ~/.bash_aliases

@@ -6,8 +6,10 @@ if [ -f ~/.git-prompt.sh ]; then
     export GIT_PS1_SHOWDIRTYSTATE=1
 fi
 
-# source adb.bash
-source ~/AOSP/Lollipop/sdk/bash_completion/adb.bash
+# source adb bash
+if [ -f ~/.adb.bash ]; then
+    source ~/.adb.bash
+fi
 
 # refresh PS1
 PS1='
