@@ -27,7 +27,7 @@ export ANDROID_SDK=/home/young/Android/android-sdk-linux
 # SDK tools
 export PATH=${PATH}:${ANDROID_SDK}/tools
 # SDK build-tools
-export PATH=${PATH}:${ANDROID_SDK}/build-tools/21.1.2
+export PATH=${PATH}:${ANDROID_SDK}/build-tools/22.0.1
 # SDK platform-tools
 export PATH=${PATH}:${ANDROID_SDK}/platform-tools
 
