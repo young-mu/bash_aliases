@@ -14,7 +14,7 @@ alias nb='ndk-build'
 alias adb-restart='adb kill-server; adb start-server'
 
 # external tools
-alias dex2jar='~/Tools/dex2jar/dex2jar-0.0.9.15/d2j-dex2jar.sh'
+alias dex2jar='~/Tools/dex2jar/d2j-dex2jar.sh'
 alias jd-gui='~/Tools/jd-gui/jd-gui'
 alias studio='~/Android/android-studio/bin/studio.sh'
 alias arm-gcc='arm-linux-androideabi-gcc --sysroot=/home/young/Android/android-ndk-r10d/platforms/android-21/arch-arm'
