@@ -9,6 +9,7 @@ alias bio='cd ~/AOSP/Lollipop/bionic'
 
 # internal tools
 alias d='adb shell'
+alias dev='adb devices'
 alias dp='adb shell input keyevent KEYCODE_POWER'
 alias nb='ndk-build'
 alias adb-restart='adb kill-server; adb start-server'
