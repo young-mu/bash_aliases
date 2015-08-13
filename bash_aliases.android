@@ -249,17 +249,20 @@ dlapk() {
     fi
 }
 
-# list thread name of one process
+# list thread name of one APP
 ltn() {
-    pid=$1
-
-    threads=(`adb shell ls /proc/$pid/task`)
-    numThread=${#threads[@]}
-
-    for ((i = 0; i < numThread; i++)); do
-        _tid=${threads[$i]}
-        tid=`echo $_tid | sed 's/\r$//'` # remove trailing newline char
-            thrName=`adb shell cat /proc/$pid/task/$tid/status | head -1`
-        echo "[$tid] " $thrName
-    done
+    if [ $# -ne 1 ]; then
+        echo "Usage: $0 <pid>"
+    else
+        pid=$1
+        threads=(`adb shell ls /proc/$pid/task`)
+        numThread=${#threads[@]}
+        echo "thread number:" $numThread
+        for ((i = 0; i < numThread; i++)); do
+            _tid=${threads[$i]}
+            tid=`echo $_tid | sed 's/\r$//'` # remove trailing newline char
+            thrName=`adb shell cat /proc/$pid/task/$tid/status | head -1 | awk '{print $2}'`
+            echo "[$tid]" $thrName
+        done
+    fi
 }
