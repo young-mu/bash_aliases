@@ -248,3 +248,18 @@ dlapk() {
         wget $dlurl -O $dlapk
     fi
 }
+
+# list thread name of one process
+ltn() {
+    pid=$1
+
+    threads=(`adb shell ls /proc/$pid/task`)
+    numThread=${#threads[@]}
+
+    for ((i = 0; i < numThread; i++)); do
+        _tid=${threads[$i]}
+        tid=`echo $_tid | sed 's/\r$//'` # remove trailing newline char
+            thrName=`adb shell cat /proc/$pid/task/$tid/status | head -1`
+        echo "[$tid] " $thrName
+    done
+}
