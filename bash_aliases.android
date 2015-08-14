@@ -262,7 +262,8 @@ ltn() {
             _tid=${threads[$i]}
             tid=`echo $_tid | sed 's/\r$//'` # remove trailing newline char
             thrName=`adb shell cat /proc/$pid/task/$tid/status | head -1 | awk '{print $2}'`
-            echo "[$tid]" $thrName
+            thrNo=`expr $i + 1`
+            echo $thrNo [$tid] $thrName
         done
     fi
 }
