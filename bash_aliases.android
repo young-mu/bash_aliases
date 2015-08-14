@@ -249,8 +249,8 @@ dlapk() {
     fi
 }
 
-# list thread name of one APP
-ltn() {
+# list thread name and status of one APP
+lt() {
     if [ $# -ne 1 ]; then
         echo "Usage: $0 <pid>"
     else
@@ -261,9 +261,12 @@ ltn() {
         for ((i = 0; i < numThread; i++)); do
             _tid=${threads[$i]}
             tid=`echo $_tid | sed 's/\r$//'` # remove trailing newline char
-            thrName=`adb shell cat /proc/$pid/task/$tid/status | head -1 | awk '{print $2}'`
+            thrInfo=(`adb shell cat /proc/$pid/task/$tid/status | head -2 | awk '{print $2}'`)
+            _thrName=${thrInfo[0]}
+            thrName=`echo $_thrName | sed 's/\r$//'`
+            thrStatus=${thrInfo[1]}
             thrNo=`expr $i + 1`
-            echo $thrNo [$tid] $thrName
+            echo "$thrNo [$tid] $thrName ($thrStatus)"
         done
     fi
 }
