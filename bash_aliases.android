@@ -13,6 +13,8 @@ alias dev='adb devices'
 alias dp='adb shell input keyevent KEYCODE_POWER'
 alias nb='ndk-build'
 alias adb-restart='adb kill-server; adb start-server'
+alias bio_syscall_32='cat ~/Android/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/asm/unistd.h'
+alias bio_syscall_64='cat ~/Android/android-ndk-r10e/platforms/android-21/arch-arm64/usr/include/asm-generic/unistd.h'
 
 # external tools
 alias dex2jar='~/Tools/dex2jar/d2j-dex2jar.sh'
