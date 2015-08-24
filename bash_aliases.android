@@ -242,7 +242,7 @@ adb_strace() {
 # download apk file from google play
 dlapk() {
     if [ $# -ne 1 ]; then
-        echo "Usage: $0 <apk-url-in-googleplay>"
+        echo "Usage: dlapk <apk-url-in-googleplay>"
     else
         id=`echo $1 | awk -F'=' '{print $2}'`
         dlurl="http://dl3.apk-dl.com/store/download/details?id=$id"
@@ -254,7 +254,7 @@ dlapk() {
 # list thread name and status of one APP
 lt() {
     if [ $# -ne 1 ]; then
-        echo "Usage: $0 <pid>"
+        echo "Usage: lt <pid>"
     else
         pid=$1
         threads=(`adb shell ls /proc/$pid/task`)
