@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "1. install ~/.bashrc, ~/.adb.bash"
+echo "1. install ~/.bashrc and ~/.adb.bash"
 cp ./bashrc ~/.bashrc
 cp ./adb.bash ~/.adb.bash
 
