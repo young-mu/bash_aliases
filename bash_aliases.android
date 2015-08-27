@@ -263,12 +263,11 @@ lt() {
         for ((i = 0; i < numThread; i++)); do
             _tid=${threads[$i]}
             tid=`echo $_tid | sed 's/\r$//'` # remove trailing newline char
-            thrInfo=(`adb shell cat /proc/$pid/task/$tid/status | head -2 | awk '{print $2}'`)
-            _thrName=${thrInfo[0]}
-            thrName=`echo $_thrName | sed 's/\r$//'`
-            thrStatus=${thrInfo[1]}
+            thrStat=`adb shell cat /proc/$tid/stat`
+            thrName=`echo $thrStat | awk '{print $2}'`
+            thrStatus=`echo $thrStat | awk '{print $3}'`
             thrNo=`expr $i + 1`
-            echo "$thrNo [$tid] $thrName ($thrStatus)"
+            echo "$thrNo [$tid] $thrName $thrStatus"
         done
     fi
 }
