@@ -227,6 +227,11 @@ lines() {
     fi
 }
 
+# source android aliases
+if [[ -f ~/.bash_aliases.android ]]; then
+    source ~/.bash_aliases.android
+fi
+
 # source local aliases
 if [[ -f ~/.bash_aliases.local ]]; then
     source ~/.bash_aliases.local
