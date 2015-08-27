@@ -38,3 +38,6 @@ export PATH=${PATH}:${ANDROID_NDK}
 # NDK cross-compile toolchains
 export PATH=${PATH}:${ANDROID_NDK}/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin
 export PATH=${PATH}:${ANDROID_NDK}/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin
+
+# Android studio
+export PATH=${PATH}:/Applications/Android\ Studio.app/Contents/MacOS
