@@ -31,7 +31,7 @@ alias syscall_64='cat /usr/include/x86_64-linux-gnu/asm/unistd_64.h'
 alias ds='display'          # imagemagick
 alias lx='xelatex'          # texlive-full
 alias tm='tmux -2'          # tmux
-alias st='subl'     # sublime-text
+alias st='subl'             # sublime-text
 alias diff='colordiff'      # colordiff
 alias ccolab='~/Tools/ccollab/ccollab-client/ccollabgui' # ccolab
 
