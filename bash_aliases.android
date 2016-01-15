@@ -21,6 +21,7 @@ alias dex2jar='~/Tools/dex2jar/d2j-dex2jar.sh'
 alias jd-gui='~/Tools/jd-gui/jd-gui'
 alias studio='~/Android/android-studio/bin/studio.sh'
 alias arm-gcc='arm-linux-androideabi-gcc --sysroot=/home/young/Android/android-ndk-r10e/platforms/android-21/arch-arm'
+alias arm64-gcc='aarch64-linux-android-gcc --sysroot=/home/young/Android/android-ndk-r10e/platforms/android-21/arch-arm64'
 
 # get AndroidManifest from apk into current directory
 # NOTE : apktool need to be installed
