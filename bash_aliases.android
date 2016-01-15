@@ -271,3 +271,13 @@ lt() {
         done
     fi
 }
+
+# view process maps
+maps() {
+    if [ $# -ne 1 ]; then
+        echo "Usage: maps <pid>"
+    else
+        pid=$1
+        adb shell cat /proc/${pid}/maps | vim -
+    fi
+}
