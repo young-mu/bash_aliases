@@ -17,3 +17,6 @@ stty -ixon
 
 # source bash_aliases
 source ~/.bash_aliases
+
+# add VC into PATH
+export PATH=${PATH}:/opt/vc/bin
