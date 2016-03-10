@@ -2,6 +2,7 @@
 alias c='clear'
 alias e='exit'
 alias s='source'
+alias t='tree'
 alias p='pwd'
 alias g='gedit'
 alias op='xdg-open'
