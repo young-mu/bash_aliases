@@ -112,12 +112,14 @@ genIcons() {
 # get pakcage info
 apk() {
     if [ $# -ne 1 -a $# -ne 2 ]; then
-        echo "Usage: apk [n|v|p] <apk>"
+        echo "Usage: apk [l|n|v|p] <apk>"
     else
         if [ $# -eq 1 ]; then
             aapt d badging $1
         elif [ $# -eq 2 ]; then
             case "$1" in
+                # app name
+                l) aapt d badging $2 | grep application-label: | awk -F"'" '{print $2}';;
                 # package name
                 n) aapt d badging $2 | grep package | awk -F\' '{print $2}';;
                 # app version
