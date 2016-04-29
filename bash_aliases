@@ -29,7 +29,8 @@ alias ds='display'          # imagemagick
 alias lx='xelatex'          # texlive-full
 alias st='sublime-text'     # sublime-text
 alias diff='colordiff'      # colordiff
-alias ccolab='~/Tools/ccollab/ccollab-client/ccollabgui' # ccolab
+alias mou='open -a ~/Tools/Mou.app' # Mou
+alias chrome='open -a "/Applications/Google Chrome.app"' # Chrome
 
 # Inner Functions
 fls() {
