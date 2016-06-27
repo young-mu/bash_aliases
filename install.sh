@@ -2,7 +2,7 @@
 
 echo "1. install ~/.bashrc and ~/.adb.bash"
 cp ./bashrc ~/.bashrc
-#cp ./adb.bash ~/.adb.bash
+cp ./adb.bash ~/.adb.bash
 
 echo "2. install ~/.bash_aliases"
 cp ./bash_aliases ~/.bash_aliases
