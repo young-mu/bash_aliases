@@ -30,6 +30,7 @@ alias lx='xelatex'          # texlive-full
 alias st='sublime-text'
 alias diff='colordiff'
 alias chrome='open -a "/Applications/Google Chrome.app"' # Chrome
+alias lint='~/Github/cpplint/cpplint.py'
 
 # Inner Functions
 fls() {
