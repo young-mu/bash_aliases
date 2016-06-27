@@ -98,67 +98,6 @@ num() {
     echo "${fileNum} files, ${dirNum} directories"
 }
 
-# generate current project filelist for quick searching
-genfl() {
-    if [[ -d .git ]]; then
-        exclude="\.git"
-    elif [[ -d .svn ]]; then
-        exclude=".svn"
-    else
-        exclude="*"
-    fi
-    if [[ -e ./filelist ]]; then
-        echo "update filelist ... "
-    else
-        echo "create filelist ... "
-    fi
-    files=`find . -type f -name "*" | grep -vwe ${exclude}`
-    for file in ${files}; do
-        bfile=`basename ${file}`
-        ffile=${file/./$(pwd)}
-        echo "${bfile} ${ffile}" >> /tmp/filelist
-    done
-    cat /tmp/filelist | sort > ./filelist
-    rm /tmp/filelist
-    echo "done"
-}
-
-# filelist defined here
-#filelist=/home/young/<proj>/trunk/src/filelist
-
-# quick open by indexing file in filelist
-qo() {
-    if [[ $# -ne 1 ]]; then
-        echo "Usage: qo <file>"
-    else
-        findres=`cat ${filelist} | grep -w "$1" | awk '{print $2}'`
-        findnum=`echo ${findres} | awk '{print NF}'`
-        if [[ ${findnum} -eq 0 ]]; then
-            echo "$1 NOT found!"
-        elif [[ ${findnum} -eq 1 ]]; then
-            echo "${findres}"
-            vim ${findres}
-        elif [[ ${findnum} -ge 1 ]]; then
-            declare -i n=1
-            for file in ${findres}; do
-                echo "[${n}] ${file}"
-                n=n+1
-            done
-            read -p "which one to open: " num
-            if [[ ${num} -ge 1 && ${num} -lt n ]]; then
-                vim `echo ${findres} | awk -v cnt=$num '{print $cnt}'`
-            fi
-        fi
-    fi
-}
-
-_qo_autocomp() {
-    curw=${COMP_WORDS[COMP_CWORD]}
-    files=(`cat ${filelist} | awk '{print $1}' | uniq`)
-    COMPREPLY=(`compgen -W '${files[@]}' -- $curw`)
-}
-complete -F _qo_autocomp qo
-
 # find file and open it
 ffo() {
     if [[ $# -ne 1 ]]; then
