@@ -29,6 +29,7 @@ alias syscall_32='cat /usr/include/x86_64-linux-gnu/asm/unistd_32.h'
 alias syscall_64='cat /usr/include/x86_64-linux-gnu/asm/unistd_64.h'
 
 # External Commands Abbr.
+alias kc='kubectl'
 alias ds='display'          # imagemagick
 alias lx='xelatex'          # texlive-full
 alias tm='tmux -2'          # tmux
